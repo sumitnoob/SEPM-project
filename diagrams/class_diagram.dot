@@ -1,0 +1,21 @@
+digraph G { rankdir=BT; nodesep=0.5; ranksep=0.7; fontname="Helvetica";
+ node [shape=record, fontname="Helvetica", fontsize=10, style=filled, fillcolor="#FFFDE7"];
+ edge [fontname="Helvetica", fontsize=9];
+ User [label="{«abstract»\nUser|- userId : int\l- name : String\l- email : String\l- passwordHash : String\l|+ login() : bool\l+ logout() : void\l}"];
+ Student [label="{Student|- university : String\l- batchYear : int\l|+ searchMess(pref) : List\l+ writeReview() : Review\l+ requestSubscription() : Subscription\l}"];
+ MessOwner [label="{MessOwner|- phone : String\l|+ addMess() : Mess\l+ updateMenu() : void\l+ decideSubscription() : void\l}"];
+ Admin [label="{Admin|+ approveMess() : void\l+ moderateReview() : void\l}"];
+ Preference [label="{Preference|- maxBudget : float\l- maxDistanceKm : float\l- foodType : String\l- mealsPerDay : int\l|+ score(mess) : float\l}"];
+ Mess [label="{Mess|- messId : int\l- name : String\l- address : String\l- distanceKm : float\l- monthlyPrice : float\l- foodType : String\l- mealsPerDay : int\l- status : String\l|+ avgRating() : float\l+ addReview(r) : void\l}"];
+ WeeklyMenu [label="{WeeklyMenu|- menuId : int\l- day : String\l- mealType : String\l- items : String\l|+ getMenu() : String\l}"];
+ Review [label="{Review|- reviewId : int\l- food : int\l- hygiene : int\l- service : int\l- value : int\l- comment : String\l- date : Date\l|+ overall() : float\l}"];
+ Subscription [label="{Subscription|- subId : int\l- startDate : Date\l- mealPlan : String\l- status : String\l|+ approve() : void\l+ cancel() : void\l}"];
+ Student -> User [arrowhead=empty]; MessOwner -> User [arrowhead=empty]; Admin -> User [arrowhead=empty];
+ Student -> Preference [arrowtail=diamond, dir=back, taillabel="1", headlabel="0..1", label="has"];
+ MessOwner -> Mess [dir=none, headlabel="1..*", taillabel="1", label="owns"];
+ Mess -> WeeklyMenu [arrowtail=diamond, dir=back, taillabel="1", headlabel="1..*", label="offers"];
+ Review -> Mess [dir=none, headlabel="1", taillabel="*", label="rates"];
+ Review -> Student [dir=none, headlabel="1", taillabel="*", label="written by"];
+ Subscription -> Mess [dir=none, headlabel="1", taillabel="*", label="for"];
+ Subscription -> Student [dir=none, headlabel="1", taillabel="*", label="requested by"];
+}

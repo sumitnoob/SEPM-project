@@ -1,0 +1,14 @@
+digraph G { rankdir=LR; fontname="Helvetica"; nodesep=0.3; ranksep=1.6;
+ node [fontname="Helvetica", fontsize=10]; edge [dir=none, color="#455A64"];
+ node [shape=box, style="filled,rounded", fillcolor="#C8E6C9"]; Student; Owner [label="Mess Owner"]; Admin;
+ subgraph cluster_s { label="MessFinder System"; style=rounded; fontsize=12;
+  node [shape=ellipse, style=filled, fillcolor="#FFFFFF"];
+  u1 [label="Register / Login"]; u2 [label="Set Preferences"]; u3 [label="Search & Filter Messes"];
+  u4 [label="View Ranked Recommendations"]; u5 [label="Compare Messes"]; u6 [label="View Weekly Menu"];
+  u7 [label="Write Review & Rating"]; u8 [label="Request Subscription"];
+  u9 [label="Manage Mess Profile"]; u10 [label="Update Menu & Prices"]; u11 [label="Approve / Reject Subscription"];
+  u12 [label="Approve Mess Listings"]; u13 [label="Moderate Reviews"]; u14 [label="Manage Users"]; }
+ Student -> {u1 u2 u3 u4 u5 u6 u7 u8}; Owner -> {u1 u9 u10 u11}; Admin -> {u1 u12 u13 u14};
+ u4 -> u3 [style=dashed, dir=forward, label="«include»", fontsize=8];
+ u8 -> u11 [style=dashed, dir=forward, label="«include»", fontsize=8];
+}

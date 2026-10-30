@@ -1,0 +1,17 @@
+digraph G { rankdir=LR; nodesep=0.5; ranksep=1.0; fontname="Helvetica";
+ node [shape=record, fontname="Helvetica", fontsize=10, style=filled, fillcolor="#E3F2FD"];
+ edge [fontname="Helvetica", fontsize=9, arrowhead=crow, arrowtail=tee, dir=both];
+ USERS [label="{USERS|PK user_id\lname\lemail (unique)\lpassword_hash\lrole (student/owner/admin)\l}"];
+ PREFERENCE [label="{PREFERENCE|PK pref_id\lFK user_id (unique)\lmax_budget\lmax_distance_km\lfood_type\lmeals_per_day\l}"];
+ MESS [label="{MESS|PK mess_id\lFK owner_id\lname\laddress\ldistance_km\lmonthly_price\lfood_type\lmeals_per_day\lstatus\l}"];
+ MENU [label="{WEEKLY_MENU|PK menu_id\lFK mess_id\lday\lmeal_type\litems\l}"];
+ REVIEW [label="{REVIEW|PK review_id\lFK mess_id\lFK student_id\lfood, hygiene, service, value\lcomment\lcreated_at\l}"];
+ SUB [label="{SUBSCRIPTION|PK sub_id\lFK mess_id\lFK student_id\lmeal_plan\lstart_date\lstatus\l}"];
+ USERS -> PREFERENCE [label="sets", arrowhead=tee, arrowtail=tee];
+ USERS -> MESS [label="owns"];
+ MESS -> MENU [label="offers"];
+ MESS -> REVIEW [label="receives"];
+ USERS -> REVIEW [label="writes"];
+ MESS -> SUB [label="has"];
+ USERS -> SUB [label="requests"];
+}

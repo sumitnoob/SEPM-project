@@ -1,0 +1,13 @@
+digraph G { rankdir=TB; fontname="Helvetica"; nodesep=0.5; ranksep=0.8;
+ node [shape=record, fontname="Helvetica", fontsize=10, style=filled, fillcolor="#F3E5F5"]; edge [fontname="Helvetica", fontsize=9];
+ s1 [label="{\<u\>s1 : Student\</u\>|name = \"Rahim\"\lbatchYear = 2026\luniversity = \"Campus U\"\l}"];
+ p1 [label="{\<u\>p1 : Preference\</u\>|maxBudget = 3500\lmaxDistanceKm = 1.5\lfoodType = \"Halal\"\lmealsPerDay = 2\l}"];
+ o1 [label="{\<u\>o1 : MessOwner\</u\>|name = \"Karim Uddin\"\l}"];
+ m1 [label="{\<u\>m1 : Mess\</u\>|name = \"Green Bite Mess\"\ldistanceKm = 0.8\lmonthlyPrice = 3200\lfoodType = \"Halal\"\lstatus = \"approved\"\l}"];
+ m2 [label="{\<u\>m2 : Mess\</u\>|name = \"Campus Corner Mess\"\ldistanceKm = 2.4\lmonthlyPrice = 4000\lfoodType = \"Mixed\"\lstatus = \"approved\"\l}"];
+ w1 [label="{\<u\>w1 : WeeklyMenu\</u\>|day = \"Sunday\"\lmealType = \"Lunch\"\litems = \"Rice, Chicken, Dal\"\l}"];
+ r1 [label="{\<u\>r1 : Review\</u\>|food = 4, hygiene = 5\lservice = 4, value = 5\lcomment = \"Clean and tasty\"\l}"];
+ sub1 [label="{\<u\>sub1 : Subscription\</u\>|mealPlan = \"Lunch+Dinner\"\lstatus = \"pending\"\l}"];
+ s1->p1 [label="has"]; o1->m1 [label="owns"]; o1->m2 [label="owns"]; m1->w1 [label="offers"];
+ r1->m1 [label="rates"]; r1->s1 [label="written by"]; sub1->m1 [label="for"]; sub1->s1 [label="requested by"];
+}

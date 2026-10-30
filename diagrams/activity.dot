@@ -1,0 +1,16 @@
+digraph G { rankdir=TB; fontname="Helvetica"; nodesep=0.5; ranksep=0.4;
+ node [fontname="Helvetica", fontsize=10, shape=box, style="filled,rounded", fillcolor="#E1F5FE"]; edge [fontname="Helvetica", fontsize=9];
+ st [shape=circle, label="", width=0.25, fillcolor=black, style=filled];
+ en [shape=doublecircle, label="", width=0.22, fillcolor=black, style=filled];
+ a1 [label="Register / Login"]; a2 [label="Enter preferences\n(budget, distance, food type, meals)"];
+ a3 [label="System scores & ranks messes"]; a4 [label="View ranked list"];
+ d1 [shape=diamond, style=filled, fillcolor="#FFF9C4", label="Suitable\nmess found?"];
+ a5 [label="Refine filters"]; a6 [label="View details, menu & reviews"];
+ d2 [shape=diamond, style=filled, fillcolor="#FFF9C4", label="Subscribe?"];
+ a7 [label="Send subscription request"]; a8 [label="Owner reviews request"];
+ d3 [shape=diamond, style=filled, fillcolor="#FFF9C4", label="Approved?"];
+ a9 [label="Subscription confirmed"]; a10 [label="Notify student: rejected"]; a11 [label="Write review after using mess"];
+ st->a1->a2->a3->a4->d1; d1->a6 [label="yes"]; d1->a5 [label="no"]; a5->a3;
+ a6->d2; d2->a7 [label="yes"]; d2->a4 [label="no"]; a7->a8->d3; d3->a9 [label="yes"]; d3->a10 [label="no"]; a10->a4;
+ a9->a11->en;
+}

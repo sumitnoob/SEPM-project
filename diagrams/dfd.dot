@@ -1,0 +1,13 @@
+digraph G { rankdir=LR; fontname="Helvetica"; nodesep=0.45; ranksep=1.1;
+ node [fontname="Helvetica", fontsize=10]; edge [fontname="Helvetica", fontsize=8];
+ node [shape=box, style=filled, fillcolor="#FFE0B2"]; S [label="Student"]; O [label="Mess Owner"]; A [label="Admin"];
+ node [shape=circle, style=filled, fillcolor="#BBDEFB", width=1.2, fixedsize=true];
+ P1 [label="1.0\nManage\nAccounts"]; P2 [label="2.0\nManage Mess\nListings"]; P3 [label="3.0\nSearch &\nRank"]; P4 [label="4.0\nManage\nReviews"]; P5 [label="5.0\nHandle\nSubscriptions"];
+ node [shape=cds, style=filled, fillcolor="#F5F5F5", fixedsize=false, width=0, height=0]; 
+ D1 [label="D1 | Users & Preferences",]; D2 [label="D2 | Messes & Menus",]; D3 [label="D3 | Reviews",]; D4 [label="D4 | Subscriptions",];
+ S -> P1 [label="registration,\nlogin"]; O -> P1; A -> P1 [label="user mgmt"]; P1 -> D1 [label="user data"];
+ O -> P2 [label="mess details,\nmenu, prices"]; P2 -> D2; A -> P2 [label="approval"];
+ S -> P3 [label="preferences,\nfilters"]; D1 -> P3 [label="preference"]; D2 -> P3 [label="mess data"]; D3 -> P3 [label="avg ratings"]; P3 -> S [label="ranked list,\nmenus"];
+ S -> P4 [label="rating,\ncomment"]; P4 -> D3; A -> P4 [label="moderation"];
+ S -> P5 [label="subscribe request"]; P5 -> D4; D2 -> P5; P5 -> O [label="request"]; O -> P5 [label="decision"]; P5 -> S [label="status"];
+}
